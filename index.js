@@ -1,4 +1,5 @@
-const { makeWASocket, useMultiFileAuthState } = require('@adiwajshing/baileys');
+const { default: makeWASocket, useMultiFileAuthState } = require('@adiwajshing/baileys');
+
 const express = require('express');
 require('dotenv').config();
 
