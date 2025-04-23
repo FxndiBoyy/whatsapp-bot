@@ -1,11 +1,12 @@
-const { default: makeWASocket, useSingleFileAuthState } = require('@adiwajshing/baileys');
+const { makeWASocket, useMultiFileAuthState } = require('@adiwajshing/baileys');
 const express = require('express');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 
-const { state, saveState } = useSingleFileAuthState('./auth_info.json');
+// Usando a função correta para a autenticação
+const { state, saveState } = useMultiFileAuthState('./auth_info');
 
 async function startBot() {
   const sock = makeWASocket({ auth: state });
@@ -21,7 +22,7 @@ async function startBot() {
 
     console.log('Mensagem recebida:', text);
 
-    // Aqui você vai processar a mensagem e aplicar etiquetas, caso necessário
+    // Processar mensagem (como adicionar etiquetas, etc)
   });
 
   app.listen(3000, () => {
